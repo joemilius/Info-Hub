@@ -20,7 +20,12 @@
 }
 #weathercontainer h3{
    text-align: center;
-   
+
+}
+#location-form{
+    text-align: center;
+    display: flex;
+    
 }
 div#weatherscroll{
     overflow: auto;
