@@ -18,13 +18,17 @@ let forecastScroll = document.getElementById('weather-scroll')
 console.log(hourObject)
 let weatherDiv = document.createElement('div')
 let weatherImg = document.createElement('img')
+let tempH3 = document.createElement('h3')
+
 weatherImg.src = `http:${hourObject.condition.icon}`
+tempH3.textContent = `${hourObject.temp_f}°F`
 
 
 let currentHour = parseInt(Date().split(' ')[4])
 let forecastHour = parseInt(hourObject.time.split(' ')[1])
 if(currentHour <= forecastHour){
 weatherDiv.append(weatherImg)
+weatherDiv.append(tempH3)
 forecastScroll.append(weatherDiv)
 }
 }
