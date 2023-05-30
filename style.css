@@ -10,7 +10,7 @@
     padding-top: 20px;
 }
 
-#weathercontainer{
+#weather-container{
     border-style: solid;
     border-width: 1px;
     border-color: black;
@@ -18,16 +18,17 @@
     margin: 5px;
 
 }
-#weathercontainer h3{
+#weather-container h3{
    text-align: center;
 
 }
 #location-form{
     text-align: center;
     display: flex;
-    
+
 }
-div#weatherscroll{
+div#weather-scroll{
+    display: flex;
     overflow: auto;
   white-space: nowrap;
 }

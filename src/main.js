@@ -3,6 +3,7 @@
 const weatherForm = document.getElementById('location-form')
 weatherForm.addEventListener('submit', (event) => {
     event.preventDefault()
+    
     let input = document.getElementById('location')
     let city = input.value
     console.log(city)
@@ -13,5 +14,17 @@ weatherForm.addEventListener('submit', (event) => {
 })
 
 function renderWeather(hourObject){
+let forecastScroll = document.getElementById('weather-scroll')
 console.log(hourObject)
+let weatherDiv = document.createElement('div')
+let weatherImg = document.createElement('img')
+weatherImg.src = `http:${hourObject.condition.icon}`
+
+
+let currentHour = parseInt(Date().split(' ')[4])
+let forecastHour = parseInt(hourObject.time.split(' ')[1])
+if(currentHour <= forecastHour){
+weatherDiv.append(weatherImg)
+forecastScroll.append(weatherDiv)
+}
 }
