@@ -14,21 +14,33 @@ weatherForm.addEventListener('submit', (event) => {
 })
 
 function renderWeather(hourObject){
-let forecastScroll = document.getElementById('weather-scroll')
-console.log(hourObject)
-let weatherDiv = document.createElement('div')
-let weatherImg = document.createElement('img')
-let tempH3 = document.createElement('h3')
+    let currentHour = parseInt(Date().split(' ')[4])
+    let forecastHour = parseInt(hourObject.time.split(' ')[1])
 
-weatherImg.src = `http:${hourObject.condition.icon}`
-tempH3.textContent = `${hourObject.temp_f}°F`
+    let forecastScroll = document.getElementById('weather-scroll')
+
+    let weatherDiv = document.createElement('div')
+    let weatherImg = document.createElement('img')
+    let tempH3 = document.createElement('h3')
+    let hourH3 = document.createElement('h3')
 
 
-let currentHour = parseInt(Date().split(' ')[4])
-let forecastHour = parseInt(hourObject.time.split(' ')[1])
-if(currentHour <= forecastHour){
-weatherDiv.append(weatherImg)
-weatherDiv.append(tempH3)
-forecastScroll.append(weatherDiv)
-}
+    weatherImg.src = `http:${hourObject.condition.icon}`
+    tempH3.textContent = `${hourObject.temp_f}°F`
+    weatherDiv.className = 'eachDay'
+
+    if (forecastHour >= 12){
+        hourH3.textContent = `${forecastHour - 12}pm`
+    } else if(forecastHour < 12 && forecastHour > 0){
+        hourH3.textContent = `${forecastHour}am`
+    }else {
+        hourH3.textContent = '12am'
+    }
+
+    if(currentHour <= forecastHour){
+        weatherDiv.append(hourH3)
+        weatherDiv.append(weatherImg)
+        weatherDiv.append(tempH3)
+        forecastScroll.append(weatherDiv)
+    }
 }

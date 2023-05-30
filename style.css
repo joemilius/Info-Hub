@@ -16,19 +16,35 @@
     border-color: black;
     border-radius: 25px;
     margin: 5px;
+    background-color: whitesmoke;
 
 }
 #weather-container h3{
    text-align: center;
 
 }
+#location {
+    width: 70%;
+}
 #location-form{
     text-align: center;
     display: flex;
+    margin-left: 5px;
+    margin-right: 5px;
 
 }
 div#weather-scroll{
     display: flex;
+    margin-bottom: 18px;
     overflow: auto;
   white-space: nowrap;
+}
+
+.eachDay {
+    border-style: dashed;
+    border-width: 1px;
+    border-color: black;
+    background-color: deepskyblue;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
