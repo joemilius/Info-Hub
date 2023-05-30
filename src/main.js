@@ -10,7 +10,11 @@ weatherForm.addEventListener('submit', (event) => {
 
     fetch(`http://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${city}&days=1&aqi=no&alerts=no`)
     .then(response => response.json())
-    .then(data => data.forecast.forecastday[0].hour.forEach(hour => renderWeather(hour)))
+    .then(data => {
+        let forecastScroll = document.getElementById('weather-scroll')
+        forecastScroll.innerHTML = ''
+        data.forecast.forecastday[0].hour.forEach(hour => renderWeather(hour))
+    })
 })
 
 function renderWeather(hourObject){
@@ -26,7 +30,7 @@ function renderWeather(hourObject){
 
 
     weatherImg.src = `http:${hourObject.condition.icon}`
-    tempH3.textContent = `${hourObject.temp_f}°F`
+    tempH3.textContent = `${parseInt(hourObject.temp_f)}°F`
     weatherDiv.className = 'eachDay'
 
     if (forecastHour >= 12){
