@@ -6,7 +6,6 @@ weatherForm.addEventListener('submit', (event) => {
     
     let input = document.getElementById('location')
     let city = input.value
-    console.log(city)
 
     fetch(`http://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${city}&days=1&aqi=no&alerts=no`)
     .then(response => response.json())
