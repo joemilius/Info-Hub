@@ -25,11 +25,12 @@ function renderWeather(data){
     let tempArray = data.hourly.temperature_2m.slice(currentHour, currentHour + 24)
     let hourArray = data.hourly.time.slice(currentHour, currentHour + 24)
     let weatherCodeArray = data.hourly.weathercode.slice(currentHour, currentHour + 24)
-    console.log(data)
+
+    let forecastScroll = document.getElementById('weather-scroll')
+    forecastScroll.innerHTML = ''
     
     for(let i = 0; i < tempArray.length; i++){
         let forecastHour = parseInt(hourArray[i].split('T')[1])
-        let forecastScroll = document.getElementById('weather-scroll')
 
         let weatherDiv = document.createElement('div')
         let weatherImg = document.createElement('img')
