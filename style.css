@@ -56,3 +56,20 @@ div#weather-scroll{
     margin-left: 5px;
     margin-right: 5px;
 }
+
+#calculator-container {
+    height: 400px;
+}
+
+#calculator-button-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+    height: 70%;
+}
+
+.calculator-button {
+    height: 25%;
+    width: 25%;
+}
