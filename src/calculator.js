@@ -1,15 +1,12 @@
 let calcText = document.querySelector("#calculator-container h4")
-let numberButtons = document.querySelectorAll('.number')
-let actionButtons = document.querySelectorAll('.action')
+let equationButtons = document.querySelectorAll('.equation')
 
-numberButtons.forEach(button => {
+
+let equation = ''
+
+equationButtons.forEach(button => {
     button.addEventListener("click", (event) => {
-        console.log('i am a number')
-    })
-})
-
-actionButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        console.log('i am an action')
+        equation = equation + event.target.textContent
+        console.log(equation)
     })
 })
