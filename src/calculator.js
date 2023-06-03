@@ -32,47 +32,31 @@ equalsButton.addEventListener('click', (event) => {
     if(actionArray.some((element) => equationArray.includes(element)) && !actionArray.includes(equationArray[0]) && equationArray[0] !== ''){
         for(let i = 0; i < equationArray.length; i++){
             if('x' === equationArray[i]){
-                // if(equationArray[i + 2] === '/'){
-                //     total += (parseInt(equationArray[i - 1]) * parseInt(equationArray[i + 1]))
-                //     total = total / parseInt(equationArray[i + 3])
-                //     equationArray.splice((i - 1), 5, `${total}`)
-                //     total = 0
-                //     i = i - 1
-                //     console.log(equationArray)
-                // } else if (equationArray[i + 2] === 'x'){
-                //     total += (parseInt(equationArray[i - 1]) * parseInt(equationArray[i + 1]))
-                //     total = total * parseInt(equationArray[i + 3])
-                //     equationArray.splice((i - 1), 5, `${total}`)
-                //     total = 0
-                //     i = i - 1
-                //     console.log(equationArray)
-                // }else{
-                    equationArray.splice((i - 1), 3, `${parseInt(equationArray[i - 1]) * parseInt(equationArray[i + 1])}`)
+                    equationArray.splice((i - 1), 3, `${parseFloat(equationArray[i - 1]) * parseFloat(equationArray[i + 1])}`)
                     i = i - 1
                     console.log(equationArray)
-                // }
             } else if('/' === equationArray[i]){
-                // if(equationArray[i + 2] === '/'){
-                //     total += (parseInt(equationArray[i - 1]) / parseInt(equationArray[i + 1]))
-                //     total = total / parseInt(equationArray[i + 3])
-                //     equationArray.splice((i - 1), 5, `${total}`)
-                //     total = 0
-                //     i = i - 1
-                //     console.log(equationArray)
-                // } else if (equationArray[i + 2] === 'x'){
-                //     total += (parseInt(equationArray[i - 1]) / parseInt(equationArray[i + 1]))
-                //     total = total * parseInt(equationArray[i + 3])
-                //     equationArray.splice((i - 1), 5, `${total}`)
-                //     total = 0
-                //     i = i - 1
-                //     console.log(equationArray)
-                // }else{
-                    equationArray.splice((i - 1), 3, `${parseInt(equationArray[i - 1]) / parseInt(equationArray[i + 1])}`)
+                    equationArray.splice((i - 1), 3, `${parseFloat(equationArray[i - 1]) / parseFloat(equationArray[i + 1])}`)
                     i = i - 1
                     console.log(equationArray)
-                // }
+               
             }
-            console.log()
+        }
+
+        if (equationArray.length === 1){
+            return parseFloat(equationArray[0])
+        }
+
+        if(equationArray.length > 2 && !actionArray.includes(equationArray[equationArray.length - 1]) && equationArray[equationArray.length - 1] !== ''){
+            total += parseFloat(equationArray[0])
+            for(let i = 1; i < equationArray.length; i++){
+                if(equationArray[i] === '+'){
+                    total += parseFloat(equationArray[i + 1])
+                    console.log(total)
+                } else if (equationArray[i] === '-'){
+                    total -= parseFloat(equationArray[i + 1])
+                }
+            }
         }
         
     }
