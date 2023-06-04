@@ -17,6 +17,7 @@ body {
     text-align: center;
 }
 
+/* WEATHER STYLING */
 #weather-container{
     border-style: solid;
     border-width: 2px;
@@ -61,6 +62,7 @@ div#weather-scroll{
     margin-right: 5px;
 }
 
+/* CALCULATOR STYLING */
 #calculator-container {
     height: 400px;
     border-style: solid;
@@ -114,7 +116,19 @@ div#weather-scroll{
     border-width: 1px;
     margin-top: -1px;
     margin-bottom: -1px;
+    overflow: hidden;
+    box-shadow: 10px -1px 0px 0px rgba(158,155,155,0.75);
 }
+
+.calculator-button:hover {
+    background-color: lightgray;
+}
+
+.calculator-button:active {
+    background-color: #c4b8ff;
+    box-shadow: 0 1px rgb(249, 248, 248);
+    transform: translateY(4px);
+  }
 
 .bottom {
     border-bottom: -1px;
@@ -124,4 +138,8 @@ div#weather-scroll{
 
 .calculator-button.number {
     background-color: rgb(90, 175, 244);
+}
+
+.calculator-button.number:hover {
+    background-color: dodgerblue;
 }
