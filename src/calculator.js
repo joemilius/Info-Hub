@@ -8,14 +8,14 @@ let currentText = ''
 
 equationButtons.forEach(button => {
     button.addEventListener("click", (event) => {
-        let actionDict = {
+        let operationDict = {
             '+': ' + ',
             '-': ' - ',
             '/': ' / ',
             'x': ' x '
         }
-        if (actionDict[event.target.textContent]){
-            equation = equation + actionDict[event.target.textContent]
+        if (operationDict[event.target.textContent]){
+            equation = equation + operationDict[event.target.textContent]
             currentText = ''
         } else {
             equation = equation + event.target.textContent
@@ -26,15 +26,15 @@ equationButtons.forEach(button => {
 })
 
 equalsButton.addEventListener('click', (event) => {
-    let actionArray = ['+', '-', '/', 'x']
+    let operationArray = ['+', '-', '/', 'x']
     let equationArray = equation.split(' ')
     let total = 0
-    console.log(equationArray)
-    if(actionArray.includes(equationArray[equationArray.length - 1])){
+
+    if(operationArray.includes(equationArray[equationArray.length - 1])){
         equationArray.pop()
     }
 
-    if(actionArray.some((element) => equationArray.includes(element)) && !actionArray.includes(equationArray[0]) && equationArray[0] !== ''){
+    if(operationArray.some((element) => equationArray.includes(element)) && !actionArray.includes(equationArray[0]) && equationArray[0] !== ''){
         for(let i = 0; i < equationArray.length; i++){
             if('x' === equationArray[i]){
                     equationArray.splice((i - 1), 3, `${parseFloat(equationArray[i - 1]) * parseFloat(equationArray[i + 1])}`)
@@ -44,13 +44,13 @@ equalsButton.addEventListener('click', (event) => {
                     i = i - 1
             }
         }
-        console.log(equationArray.length === 1)
+        
         if (equationArray.length === 1){
             total = parseFloat(equationArray[0])
             calcText.textContent = total
         }
 
-        if(equationArray.length > 2 && !actionArray.includes(equationArray[equationArray.length - 1]) && equationArray[equationArray.length - 1] !== ''){
+        if(equationArray.length > 2 && !operationArray.includes(equationArray[equationArray.length - 1]) && equationArray[equationArray.length - 1] !== ''){
             total += parseFloat(equationArray[0])
             for(let i = 1; i < equationArray.length; i++){
                 if(equationArray[i] === '+'){
@@ -62,6 +62,7 @@ equalsButton.addEventListener('click', (event) => {
             }
         }
         calcText.textContent = total
+        equation = `${total}`
     }
 
 })
